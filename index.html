@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8fb">
+  <meta name="description" content="ماكينة تعديل المود لنور من أحمد — نسخة مطوّرة بستايل عبّاد الشمس.">
+  <title>ماكينة تعديل المود — نور × أحمد</title>
+  <style>
+    :root{
+      --ink:#493842; --muted:#8e7d86; --pink:#f7c6d8; --pink2:#fde9f1; --pink3:#ef9abb;
+      --white:#fffdfd; --line:#ecdbe3; --rose:#a55a7a; --roseDark:#844462;
+      --yellow:#f4c64a; --yellowSoft:#fff0b2; --brown:#835b2b;
+      --shadow:0 24px 60px rgba(141,92,110,.14);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;color:var(--ink);background:
+      radial-gradient(circle at 8% 10%, rgba(255,221,234,.9), transparent 28%),
+      radial-gradient(circle at 92% 24%, rgba(255,244,189,.8), transparent 20%),
+      linear-gradient(180deg,#fffafc 0%,#fff8f6 100%);
+      min-width:280px;
+    }
+    button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+    button:focus-visible{outline:3px solid #9f5b79;outline-offset:3px}
+    .page{width:min(100% - 28px, 920px);margin:auto;padding:20px 0 44px}
+    .mast{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+    .logo{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:850}
+    .logo small{display:block;color:var(--muted);font-size:11px;font-weight:700;margin-top:2px}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.8);font-size:11px;font-weight:800;color:#7b6b73}
+    .hero{text-align:center;padding:8px 0 10px}
+    .eyebrow{font-size:12px;font-weight:900;color:var(--rose);letter-spacing:.3px}
+    h1{margin:8px 0 10px;font-size:clamp(31px,8.2vw,50px);line-height:1.2;letter-spacing:-1.4px}
+    h1 .hl{position:relative;display:inline-block}
+    h1 .hl::after{content:"";position:absolute;right:0;left:0;bottom:1px;height:8px;background:#ffe08f;border-radius:999px;z-index:-1;transform:rotate(-1.5deg)}
+    .hero p{max-width:520px;margin:0 auto;color:var(--muted);font-size:14px;line-height:1.95}
+
+    .machine-wrap{position:relative;max-width:520px;margin:18px auto 0;padding-top:28px}
+    .sunflower-badge{position:absolute;inset-inline-start:50%;top:0;transform:translateX(-50%);width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%, #5d4524 0 20%, #6f5228 21% 28%, transparent 29%), radial-gradient(circle at 50% 50%, #f7ce4a 0 54%, transparent 55%), var(--white);box-shadow:0 8px 26px rgba(124,83,44,.18);border:6px solid #fff7d3;z-index:3}
+    .sunflower-badge svg{width:62px;height:62px;display:block}
+
+    .machine{position:relative;background:linear-gradient(180deg,#ffddec 0%,#f7bdd3 55%,#f0a6c1 100%);border:1px solid #dfa0b9;border-radius:38px 38px 28px 28px;box-shadow:0 16px 0 #eaafc5, 0 28px 0 #dda0b8, var(--shadow);padding:52px 16px 24px;overflow:hidden;isolation:isolate}
+    .machine::before{content:"";position:absolute;inset:8px;border:1.4px solid rgba(255,255,255,.55);border-radius:31px;pointer-events:none}
+    .machine::after{content:"";position:absolute;inset:auto 18px 13px; height:18px; background:linear-gradient(180deg, rgba(0,0,0,.04), transparent); border-radius:50%; z-index:-1;filter:blur(8px)}
+    .machine-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+    .brand{display:flex;align-items:center;gap:10px;background:#fff9fc;border-radius:16px;padding:10px 13px;box-shadow:0 4px 0 #efbfd0;color:#9e5877;font-size:12px;font-weight:900}
+    .brand small{display:block;font-size:10px;color:#8e7a84;font-weight:700;margin-top:2px}
+    .moon{width:32px;height:32px;border-radius:50%;background:#fff8dc;box-shadow:0 0 0 4px #ffd9e6,0 0 18px rgba(255,248,200,.6);position:relative;flex:none}
+    .moon:after{content:"";position:absolute;inset:-3px -6px 4px 10px;background:#f7bfd3;border-radius:50%}
+    .status{display:flex;align-items:center;gap:7px;font-size:10px;font-weight:900;color:#7b4960}
+    .dot{width:8px;height:8px;border-radius:50%;background:#75b17a;box-shadow:0 0 0 3px #dff0e1}
+
+    .window{position:relative;background:linear-gradient(180deg,#fffefe,#fff8fa 100%);border:7px solid #db8dac;border-radius:24px;min-height:186px;overflow:hidden;box-shadow:inset 0 10px 20px rgba(242,207,220,.8),0 7px 0 #cb7a9b}
+    .window::before{content:"";position:absolute;inset:0;background:linear-gradient(112deg,rgba(255,255,255,.9) 8%,transparent 36%, rgba(255,255,255,.32) 56%, transparent 64%);pointer-events:none;z-index:3}
+    .sunflower-panel{position:absolute;inset-inline-start:10px;top:12px;width:72px;height:72px;border-radius:18px;background:linear-gradient(180deg,#fff7cf,#ffe99d);border:2px solid #efcf6f;display:grid;place-items:center;box-shadow:0 5px 0 #eccb67;z-index:2}
+    .sunflower-panel svg{width:48px;height:48px}
+    .item-row{display:flex;justify-content:center;align-items:flex-end;gap:clamp(10px,4vw,30px);height:136px;padding-top:28px;padding-inline:74px 10px}
+    .product{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:72px;height:106px;background:linear-gradient(145deg,#fffafc,#fae4ed);border:2px solid #eac4d2;border-radius:16px 16px 10px 10px;box-shadow:3px 6px 0 #ecc2d2;transform:rotate(var(--tilt));position:relative;transition:transform .25s ease}
+    .product:nth-child(2){background:linear-gradient(145deg,#fffdf1,#fff0bf);border-color:#ebd48c;box-shadow:3px 6px 0 #e3c768}
+    .product:nth-child(3){background:linear-gradient(145deg,#fffafc,#f9e0f4);box-shadow:3px 6px 0 #e3b5d0}
+    .product::before{content:"";position:absolute;top:-4px;width:34px;height:6px;border-radius:999px;background:#f3afc6}
+    .product:nth-child(2)::before{background:#efc750}
+    .product svg{width:42px;height:42px}
+    .product small{font-size:10px;font-weight:900;color:#976178;text-align:center;line-height:1.3}
+    .product:nth-child(2) small{color:#9b7c28}
+    .shelf{position:absolute;left:0;right:0;bottom:29px;height:16px;background:linear-gradient(#e89ebb,#c77699);border-radius:0 0 7px 7px;box-shadow:0 5px 0 #b86988}
+    .shelf::after{content:"";position:absolute;left:25px;right:25px;top:4px;height:4px;border-radius:999px;background:rgba(255,255,255,.35)}
+
+    .divider-title{text-align:center;margin:20px 0 12px;font-size:15px;font-weight:900}
+    .options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .mood{display:flex;align-items:center;justify-content:space-between;gap:6px;text-align:right;padding:12px;border-radius:15px;border:1.5px solid #ebbecd;background:rgba(255,255,255,.7);font-size:13px;font-weight:820;color:#65424f;min-height:58px;transition:.18s transform,.18s background,.18s border,.18s box-shadow}
+    .mood span{font-size:18px}
+    .mood[aria-pressed="true"]{background:#fff;border-color:#ab6280;box-shadow:0 0 0 2px #f9dce8;transform:translateY(-1px)}
+    .mood:hover{background:#fff}
+    .mood:last-child{grid-column:1/-1}
+
+    .console{margin-top:14px;background:#fff8fb;border:1px solid #e6afc0;border-radius:18px;padding:12px;display:flex;align-items:center;gap:11px}
+    .screen{flex:1;min-width:0;min-height:58px;background:#493241;border:3px solid #dea1b8;border-radius:12px;color:#fff1b3;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:8px 10px;gap:4px;text-align:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+    .screen .mini{font-size:10px;color:#d6c1cb}
+    .screen strong{font-size:14px;line-height:1.5}
+    .coin{width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg,#ffefb4,#f3c75e);border:2px dashed #c99229;display:grid;place-items:center;color:#916e1f;box-shadow:0 2px 0 #d5a03b;font-size:19px;flex:none}
+    .dispense{margin-top:12px;width:100%;min-height:59px;border:1px solid #7e3b5b;border-radius:16px;background:linear-gradient(180deg,#9d5878,#84435f);box-shadow:0 6px 0 #68354b;color:#fff;font-size:16px;font-weight:900;transition:transform .14s,box-shadow .14s,filter .18s}
+    .dispense:active{transform:translateY(4px);box-shadow:0 2px 0 #68354b}
+    .dispense:disabled{opacity:.85;cursor:wait}
+    .slot{position:relative;width:60%;margin:19px auto 0;height:48px;background:#75475f;border:6px solid #d889a8;border-radius:10px 10px 20px 20px;box-shadow:inset 0 8px 12px #553549,0 4px 0 rgba(255,255,255,.35);overflow:visible}
+    .slot::before{content:"";position:absolute;top:8px;left:18%;right:18%;height:7px;background:#4c3343;border-radius:999px}
+    .ticket-peek{position:absolute;left:15%;right:15%;bottom:-2px;height:72px;background:linear-gradient(180deg,#fffef9,#fff9f0);border:1px solid #eadcc5;border-radius:7px 7px 12px 12px;box-shadow:0 10px 18px rgba(76,51,67,.16);transform:translateY(80px);opacity:0;padding:10px 12px 0;font-size:10px;color:#886f52}
+    .ticket-peek .line{display:block;height:4px;background:#f0d4da;border-radius:999px;margin-top:5px}.ticket-peek .line.short{width:60%}
+    .ticket-peek .line.mid{width:80%}
+    .machine.anim .ticket-peek{animation:ticketOut 1.05s cubic-bezier(.18,.72,.2,1) forwards}
+    .machine.anim .window{animation:windowShake .85s ease}
+    .machine.anim .product:nth-child(1){animation:wobA .75s ease}
+    .machine.anim .product:nth-child(2){animation:wobB .8s ease}
+    .machine.anim .product:nth-child(3){animation:wobC .75s ease}
+    .machine.anim .sunflower-panel{animation:badgePulse .85s ease}
+    @keyframes ticketOut{0%{transform:translateY(80px);opacity:0}30%{transform:translateY(40px);opacity:1}65%{transform:translateY(-2px);opacity:1}100%{transform:translateY(6px);opacity:1}}
+    @keyframes windowShake{0%,100%{transform:translateX(0)}18%{transform:translateX(-2px)}35%{transform:translateX(3px)}52%{transform:translateX(-3px)}70%{transform:translateX(2px)}}
+    @keyframes wobA{0%,100%{transform:rotate(4deg)}35%{transform:rotate(-6deg)}70%{transform:rotate(8deg)}}
+    @keyframes wobB{0%,100%{transform:rotate(-4deg)}35%{transform:rotate(8deg)}70%{transform:rotate(-10deg)}}
+    @keyframes wobC{0%,100%{transform:rotate(3deg)}35%{transform:rotate(-7deg)}70%{transform:rotate(7deg)}}
+    @keyframes badgePulse{0%,100%{transform:scale(1)}45%{transform:scale(1.08)}}
+
+    .machine-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:24px 3px 0;color:#7d4761;font-size:10px;font-weight:900}
+    .foot-mark{display:flex;align-items:center;gap:6px}
+    .sunflower.small{width:26px;height:26px}
+    .sunflower.big{width:56px;height:56px}
+
+    .result{max-width:520px;margin:26px auto 0;animation:rise .5s cubic-bezier(.18,.7,.2,1) both}
+    .ticket{position:relative;overflow:hidden;background:#fffefc;border:1px solid #e6cad2;border-radius:20px;box-shadow:var(--shadow)}
+    .ticket::before,.ticket::after{content:"";position:absolute;top:90px;width:22px;height:22px;border-radius:50%;background:#fff8f8;border:1px solid #e6cad2;z-index:2}
+    .ticket::before{right:-12px}.ticket::after{left:-12px}
+    .ticket-head{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#fff1f5;border-bottom:2px dashed #e6cad2;padding:16px 22px}
+    .ticket-head strong{font-size:13px}.ticket-head span{font-size:11px;font-weight:900;color:#9c6b80}
+    .ticket-body{padding:22px}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#ffe7ef;color:#ab6180;font-size:11px;font-weight:900}
+    .ticket-body h2{margin:12px 0 10px;font-size:clamp(22px,5.4vw,28px);line-height:1.48;letter-spacing:-.5px}
+    .ticket-body p{margin:0;color:#685962;font-size:14px;line-height:2}
+    .ticket-foot{margin-top:20px;display:flex;align-items:center;gap:8px;color:#a45f7c;font-size:12px;font-weight:900}
+    .result-actions{display:flex;gap:10px;margin-top:12px}
+    .result-actions button{flex:1;min-height:48px;border-radius:14px;border:0;font-weight:900}
+    .again{background:#f3d6e1;color:#7f4862}
+    .copy{background:#fff;border:1px solid #e3cad2;color:#65424f}
+    .tiny{display:block;text-align:center;color:#9b8d94;font-size:11px;margin-top:9px}
+
+    .bonus{max-width:520px;margin:36px auto 0;background:#fff;border:1px solid #f2e6e3;border-radius:24px;box-shadow:0 10px 26px rgba(170,121,137,.10);padding:14px 16px}
+    .bonus button{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;background:none;border:0;color:#5e4450;font-size:13px;font-weight:850;line-height:1.7;text-align:right}
+    .bonus small{display:block;font-weight:600;color:#9a8a92}
+    .bonus-note{max-width:520px;margin:10px auto 0;background:#fff7de;border:1px solid #f2e2a8;color:#735f32;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.9;text-align:center}
+    .footer{text-align:center;font-size:11px;color:#ab9ca3;margin:34px auto 8px}
+    .toast{position:fixed;left:50%;bottom:16px;transform:translate(-50%,14px);background:#493241;color:#fff;border-radius:999px;padding:12px 16px;font-size:12px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;z-index:40;box-shadow:0 12px 28px rgba(0,0,0,.18);max-width:min(92vw,380px);text-align:center}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    @media (max-width:560px){
+      .machine-wrap{padding-top:24px}
+      .sunflower-badge{width:68px;height:68px}
+      .sunflower-badge svg{width:56px;height:56px}
+      .item-row{padding-inline:72px 8px;gap:12px}
+      .product{width:66px;height:100px}
+      .options{grid-template-columns:1fr}
+      .mood:last-child{grid-column:auto}
+      .result-actions{flex-direction:column}
+      .machine-foot{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="sunflower-art" viewBox="0 0 64 64">
+    <g fill="#f4c64a">
+      <ellipse cx="32" cy="7.5" rx="6.4" ry="12"/>
+      <ellipse cx="32" cy="56.5" rx="6.4" ry="12"/>
+      <ellipse cx="7.5" cy="32" rx="12" ry="6.4"/>
+      <ellipse cx="56.5" cy="32" rx="12" ry="6.4"/>
+      <ellipse cx="15.2" cy="15.2" rx="6" ry="11" transform="rotate(-45 15.2 15.2)"/>
+      <ellipse cx="48.8" cy="48.8" rx="6" ry="11" transform="rotate(-45 48.8 48.8)"/>
+      <ellipse cx="48.8" cy="15.2" rx="6" ry="11" transform="rotate(45 48.8 15.2)"/>
+      <ellipse cx="15.2" cy="48.8" rx="6" ry="11" transform="rotate(45 15.2 48.8)"/>
+    </g>
+    <circle cx="32" cy="32" r="12.5" fill="#7b5825"/>
+    <circle cx="32" cy="32" r="8" fill="#5d421f"/>
+  </symbol>
+  <symbol id="heart-art" viewBox="0 0 64 64">
+    <path d="M32 53c-1.4 0-2.8-.5-3.9-1.5C15.5 40.7 8 34.3 8 23.7 8 16.8 13.4 12 19.8 12c4.2 0 8.1 2 10.2 5.1C32.1 14 36 12 40.2 12 46.6 12 52 16.8 52 23.7c0 10.6-7.5 17-20.1 27.8-1.1 1-2.5 1.5-3.9 1.5z" fill="#e98db1"/>
+  </symbol>
+  <symbol id="cup-art" viewBox="0 0 64 64">
+    <path d="M18 16h28l-2.6 19.6A8 8 0 0 1 35.5 43h-7A8 8 0 0 1 20.6 35.6L18 16z" fill="#f5b5ca"/>
+    <path d="M46 18h4.5c4.1 0 7.5 3.4 7.5 7.5S54.6 33 50.5 33H43" fill="none" stroke="#e18aa9" stroke-width="4" stroke-linecap="round"/>
+    <path d="M22 50h20" stroke="#c97898" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<div class="page">
+  <header class="mast">
+    <div class="logo">
+      <svg class="sunflower small" aria-hidden="true"><use href="#sunflower-art"/></svg>
+      <div>ماكينة تعديل المود<small>نسخة نور الرسمية — من أحمد</small></div>
+    </div>
+    <div class="chip">بيبي بنك × أبيض × عبّاد شمس</div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">JUST FOR NOUR</div>
+    <h1>لو يومك <span class="hl">رخم شوية</span>… الماكينة دي ليكي</h1>
+    <p>اختاري مودك، وسيبي ماكينة نور تصرّفلك حاجة ألطف: كلمة من أحمد، هزار خفيف، أو تصريح راحة رسمي معتمد من عبّاد الشمس.</p>
+  </section>
+
+  <div class="machine-wrap">
+    <div class="sunflower-badge" aria-hidden="true"><svg><use href="#sunflower-art"/></svg></div>
+    <section id="machine" class="machine" aria-label="ماكينة تعديل المود">
+      <div class="machine-top">
+        <div class="brand"><span class="moon" aria-hidden="true"></span><div>NOOR MOOD MACHINE<small>شغّالة على نظام: قمر + ورد + رخامة خفيفة</small></div></div>
+        <div class="status"><i class="dot" aria-hidden="true"></i> شغّالة ومظبوطة</div>
+      </div>
+
+      <div class="window" aria-hidden="true">
+        <div class="sunflower-panel"><svg><use href="#sunflower-art"/></svg></div>
+        <div class="item-row">
+          <div class="product" style="--tilt:4deg"><svg><use href="#heart-art"/></svg><small>جرعة لطافة</small></div>
+          <div class="product" style="--tilt:-4deg"><svg><use href="#sunflower-art"/></svg><small>مزاج مشمس</small></div>
+          <div class="product" style="--tilt:3deg"><svg><use href="#cup-art"/></svg><small>استراحة دماغ</small></div>
+        </div>
+        <div class="shelf"></div>
+      </div>
+
+      <h2 class="divider-title" id="moodTitle">نور حاسة بإيه دلوقتي؟</h2>
+      <div class="options" role="group" aria-labelledby="moodTitle">
+        <button type="button" class="mood" data-mood="angry" aria-pressed="false">متعصبة من الدنيا <span aria-hidden="true">😤</span></button>
+        <button type="button" class="mood" data-mood="down" aria-pressed="false">مخنوقة شوية <span aria-hidden="true">🥲</span></button>
+        <button type="button" class="mood" data-mood="funny" aria-pressed="false">عايزة أضحك <span aria-hidden="true">😂</span></button>
+        <button type="button" class="mood" data-mood="ahmed" aria-pressed="false">زعلانة من أحمد <span aria-hidden="true">🙄</span></button>
+        <button type="button" class="mood" data-mood="sweet" aria-pressed="false">عايزة كلام حلو <span aria-hidden="true">💗</span></button>
+      </div>
+
+      <div class="console">
+        <div class="screen" aria-live="polite">
+          <span class="mini">حالة الماكينة</span>
+          <strong id="screenText">مستنية نور تختار مودها</strong>
+        </div>
+        <div class="coin" aria-hidden="true">✦</div>
+      </div>
+      <button type="button" class="dispense" id="dispense">اختاري المود الأول 🌻</button>
+      <div class="slot" aria-hidden="true">
+        <div class="ticket-peek">
+          <span class="line short"></span>
+          <span class="line mid"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+      <div class="machine-foot">
+        <div class="foot-mark"><svg class="sunflower small"><use href="#sunflower-art"/></svg> ماكينة ثابتة على عبّاد الشمس 100%</div>
+        <span>ولا محتاجة عملات… يكفي إنك نور</span>
+      </div>
+    </section>
+  </div>
+
+  <section id="result" class="result" hidden aria-live="polite">
+    <div class="ticket">
+      <div class="ticket-head"><strong>إيصال تعديل المود</strong><span id="ticketNum">NO. 0001</span></div>
+      <div class="ticket-body">
+        <span id="ticketTag" class="tag"></span>
+        <h2 id="ticketTitle"></h2>
+        <p id="ticketMessage"></p>
+        <div class="ticket-foot"><svg class="sunflower small"><use href="#sunflower-art"/></svg><span>مختوم من أحمد لخاطر نور</span></div>
+      </div>
+    </div>
+    <div class="result-actions">
+      <button type="button" class="again" id="again">طلّعي واحدة تانية ↻</button>
+      <button type="button" class="copy" id="copy">انسخي الإيصال</button>
+    </div>
+    <span class="tiny">الموقع للهزار والتخفيف، ولو في كلام بجد: أحمد موجود يسمعك.</span>
+  </section>
+
+  <div class="bonus">
+    <button type="button" id="flowerBtn" aria-expanded="false" aria-controls="bonusNote">
+      <svg class="sunflower big" aria-hidden="true"><use href="#sunflower-art"/></svg>
+      <span>وردة نور الخاصة<small>دوسي عليها — كل مرة هتطلعلك جملة مختلفة</small></span>
+    </button>
+  </div>
+  <p id="bonusNote" class="bonus-note" hidden aria-live="polite"></p>
+
+  <footer class="footer">متعمل مخصوص لنور — أحمد × نور ©</footer>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+(()=>{
+'use strict';
+const rewards={
+  angry:[
+    {tag:'تصريح هدوء',title:'خدي بريك من أي حد مستفز',message:'لو اليوم كله عامل فيها بطل رواية وكله ضغط، يبقى دي ورقة رسمية تسمحلك تطنشي شوية، تشربي حاجة حلوة، وبعدها ترجعي تكلمي براحتك.'},
+    {tag:'قرار عاجل',title:'ممنوع حد يقولك «اهدي»',message:'اللي هيقولها هيتحوّل تلقائيًا لقسم الشكاوى. انتي من حقك تبقي متضايقة، ومن حقي أسمعك من غير تنظير.'},
+    {tag:'إفادة مود',title:'النهارده مش يوم مثالية',message:'مفيش أي مطلوب منك غير إنك تعدّي اليوم على مهل. والباقي كله يتأجل… حتى الرغي لو حبيتي.'}
+  ],
+  down:[
+    {tag:'هدنة صغيرة',title:'مش لازم تبقي زي الفل دلوقتي',message:'مسموح جدًا تبقي ساكتة، متقللة، أو مش عايزة تشرحي. أهم حاجة تاخدي نفسك براحة… وأنا موجود لو حبيتي تتكلمي.'},
+    {tag:'ورقة راحة',title:'تعالي نخفّف الحمل شوية',message:'لو اليوم تقيل، نقلّله بدل ما نكابر عليه. دقيقة هدوء، شوية مية، ورسالة من أحمد تقولك: ما تستعجليش على نفسك.'},
+    {tag:'تذكير لطيف',title:'حتى عبّاد الشمس له أيام هادية',message:'مش لازم تكوني منوّرة طول الوقت. يكفي إنك موجودة، والباقي يتصلّح بالتدريج 🌻'}
+  ],
+  funny:[
+    {tag:'محضر ضحك',title:'تم ضبط أحمد متلبسًا بالرغامة',message:'المتهم حاول يصلّح مود نور باستخدام ماكينة بدل ما يكتفي بـ«مالك؟». المحكمة قررت إن المحاولة لطيفة، حتى لو فيها شوية سخافة.'},
+    {tag:'بيان قمري',title:'القمر أعلن انسحابه',message:'صرّح رسميًا: «أنا تعبت من المقارنة. كل ما حد يجيب سيرة نور، بطلع خسران.» وطلب نقله لكوكب أقل إحراجًا.'},
+    {tag:'بلاغ فني',title:'الماكينة بتطلع هزار أكتر من اللازم',message:'الفني كشف إن السبب اسمه أحمد. كل ما ندوس «عايزة أضحك»، البرنامج يفتكر مصايبه هو الأول 😂'},
+    {tag:'نشرة سريعة',title:'خبر اليوم: نور ضحكت',message:'وده في حد ذاته إنجاز كبير يستحق نشرة عاجلة وصورة تذكارية وتعليق من أحمد: «أيوه كده… الدنيا ترجع تحترم نفسها».'}
+  ],
+  ahmed:[
+    {tag:'وضع المصالحة',title:'أحمد يقفل بقه ويفتح ودنه',message:'لو أنا مزعلك، المهم دلوقتي أفهم إيه اللي ضايقك فعلًا، مش أسبقك باعتذار عام وخلاص. احكي براحتك، وأنا هسمع للآخر.'},
+    {tag:'قرار إداري',title:'تم تعليق دفاع أحمد مؤقتًا',message:'مفيش «بس كنت…» ولا «فهمتي غلط». الأول نور تقول كل اللي عندها، وبعدها نشوف هنصلّحها إزاي.'},
+    {tag:'اعتراف صريح',title:'الموضوع مش زرار يتظبط',message:'أنا عارف إن الموقع مش بديل عن الكلام الحقيقي. لو زعلانة مني، يبقى دوري أصلّح بجد، مش أهرب بهزار.'}
+  ],
+  sweet:[
+    {tag:'كلام حلو',title:'فيه ناس تتبص… ونور تتحب',message:'فيه فرق صغير بين الحاجتين، ونور عاملاه كله لوحدها. وده تصريح رسمي مني، من غير مبالغة حتى 😌'},
+    {tag:'مجاملة معتمدة',title:'عبّاد الشمس لاقى منافس صعب',message:'الوردة جميلة، أيوه. بس أول ما اتحط اسم نور في المنافسة، قررت الوردة تكتفي بالمركز التاني من غير تظلم.'},
+    {tag:'رسالة ناعمة',title:'أنتِ اللقطة الحلوة في اليوم',message:'حتى لو اليوم نفسه مش أحسن حاجة، وجودك فيه بيعدّله شوية. ودي جملة رومانسية بدرجة رخامة مقبولة.'}
+  ]
+};
+const moodNames={angry:'متعصبة من الدنيا',down:'مخنوقة شوية',funny:'عايزة أضحك',ahmed:'زعلانة من أحمد',sweet:'عايزة كلام حلو'};
+const screenLines={
+  idle:'مستنية نور تختار مودها',
+  angry:'تم رصد عصبية محترمة',
+  down:'تم رصد مخنوقة كيوت',
+  funny:'وضع الضحك جاهز للتشغيل',
+  ahmed:'أحمد في وضع المراجعة',
+  sweet:'جارٍ تجهيز الكلام الحلو'
+};
+const bonusMessages=[
+  'عبّاد الشمس قال: أنا بحب النور… واضح إني جيت المكان الصح 🌻',
+  'خبر مهم: وردة نور رافضة تروح لحد غيرها. عندها ذوق يعني.',
+  'القمر سأل عبّاد الشمس: ليه واقف هنا؟ ردّ عليه: مستني نور تفتح الرسالة.',
+  'أحمد قدّم طلب يحجز وردة عبّاد شمس باسم نور طول السنة. الطلب قيد التنفيذ 😂'
+];
+const buttons=[...document.querySelectorAll('[data-mood]')];
+const machine=document.getElementById('machine');
+const screen=document.getElementById('screenText');
+const dispense=document.getElementById('dispense');
+const result=document.getElementById('result');
+const ticketTag=document.getElementById('ticketTag');
+const ticketTitle=document.getElementById('ticketTitle');
+const ticketMessage=document.getElementById('ticketMessage');
+const ticketNum=document.getElementById('ticketNum');
+const again=document.getElementById('again');
+const copy=document.getElementById('copy');
+const toast=document.getElementById('toast');
+const flowerBtn=document.getElementById('flowerBtn');
+const bonusNote=document.getElementById('bonusNote');
+let mood=null,count=0,last={},current=null,busy=false,bidx=-1,toastTimer=null;
+function setMood(next){
+  if(busy)return;
+  mood=next;
+  buttons.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.mood===next)));
+  screen.textContent=screenLines[next]||screenLines.idle;
+  dispense.textContent='اطلعيلي حاجة يا ماكينة ↓';
+  result.hidden=true;
+  machine.classList.remove('anim');
+}
+buttons.forEach(btn=>btn.addEventListener('click',()=>setMood(btn.dataset.mood)));
+function choose(m){
+  const arr=rewards[m], prev=last[m];
+  let index=Math.floor(Math.random()*arr.length);
+  if(arr.length>1 && index===prev) index=(index+1)%arr.length;
+  last[m]=index;
+  return arr[index];
+}
+function showToast(msg){
+  toast.textContent=msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>toast.classList.remove('show'), 2500);
+}
+function dispenseReward(){
+  if(busy) return;
+  if(!mood){ showToast('اختاري مودك الأول يا نور 🌻'); screen.textContent='اختاري مودك الأول'; return; }
+  busy=true;
+  dispense.disabled=true;
+  dispense.textContent='جارٍ الصرف…';
+  screen.textContent='الماكينة بتجهّز الطلب';
+  result.hidden=true;
+  machine.classList.remove('anim');
+  void machine.offsetWidth;
+  machine.classList.add('anim');
+  const picked=choose(mood);
+  setTimeout(()=>{
+    current=picked; count++;
+    ticketNum.textContent='NO. '+String(count).padStart(4,'0');
+    ticketTag.textContent=picked.tag;
+    ticketTitle.textContent=picked.title;
+    ticketMessage.textContent=picked.message;
+    screen.textContent='تم الصرف بنجاح ✓';
+    dispense.textContent='طلّعيلي واحدة تانية ↓';
+    dispense.disabled=false;
+    busy=false;
+    result.hidden=false;
+    result.scrollIntoView({block:'nearest', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto':'smooth'});
+  }, 1080);
+}
+async function copyText(text){
+  try{
+    if(navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
+    else{
+      const t=document.createElement('textarea'); t.value=text; t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t); t.select();
+      const ok=document.execCommand('copy'); t.remove(); if(!ok) throw new Error('copy failed');
+    }
+    showToast('اتنسخ… ابعتيه لأحمد لو حابة 💗');
+  }catch(err){
+    showToast('جرّبيه من Safari بعد الرفع على GitHub');
+  }
+}
+
+dispense.addEventListener('click',dispenseReward);
+again.addEventListener('click',dispenseReward);
+copy.addEventListener('click',()=>{ if(current) copyText('إيصال تعديل المود — نور 🌻
+'+current.title+'
+'+current.message+'
+— من أحمد'); });
+flowerBtn.addEventListener('click',()=>{ bidx=(bidx+1)%bonusMessages.length; bonusNote.textContent=bonusMessages[bidx]; bonusNote.hidden=false; flowerBtn.setAttribute('aria-expanded','true'); });
+})();
+</script>
+</body>
+</html>
